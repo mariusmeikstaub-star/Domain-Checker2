@@ -1,0 +1,5 @@
+domain,is_registered,whois_source,traffic_monthly_est,traffic_source,http_status_traffic_page,backlinks_total,backlinks_source,notes,tm_flag
+nike.de,False,rdap,3,hypestat,http=200;ok,0,none,whois=http=404 | traffic=http=200;ok | backlinks=no_data,True
+dsadhjksdhasddm82.de,False,rdap,0,none,no_data,0,none,whois=http=404 | traffic=no_data | backlinks=no_data,False
+mariusmms.com,True,rdap,61,hypestat,http=200;ok,0,none,whois=http=200 | traffic=http=200;ok | backlinks=no_data,False
+uber.de,False,rdap,1600,hypestat,http=200;ok,0,none,whois=http=404 | traffic=http=200;ok | backlinks=no_data,False

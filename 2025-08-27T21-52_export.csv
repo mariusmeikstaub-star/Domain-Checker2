@@ -1,0 +1,5 @@
+﻿,domain,is_registered,whois_source,traffic_monthly_est,traffic_source,http_status_traffic_page,backlinks_total,backlinks_source,notes,tm_flag
+0,nike.de,false,rdap,300,hypestat,http=200;ok;calc=monthly,2,hypestat,whois=http=404;rdap.denic.de | traffic=http=200;ok;calc=monthly | backlinks=http=200;ok,true
+1,dsadhjksdhasddm82.de,false,rdap,,none,no data,,none,whois=http=404;rdap.denic.de | traffic=no data | backlinks=no data,false
+2,mariusmms.com,true,rdap,2,hypestat,http=200;ok;calc=monthly,56,hypestat,whois=http=200;rdap.verisign.com | traffic=http=200;ok;calc=monthly | backlinks=http=200;ok,false
+3,uber.de,false,rdap,54,hypestat,http=200;ok;calc=monthly,78,hypestat,whois=http=404;rdap.denic.de | traffic=http=200;ok;calc=monthly | backlinks=http=200;ok,false
