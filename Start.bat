@@ -3,40 +3,38 @@
 setlocal
 
 REM -------- Domain Checker Quick Start (Windows) --------
-REM Creates/uses a local venv with Python 3.12, installs deps, and launches Streamlit.
+REM Creates/uses a local venv with the default Python 3, installs deps, and launches Streamlit.
 
-where py >nul 2>nul
+cd /d %~dp0
+
+REM --- Check for Python ---
+where python >nul 2>nul
 if errorlevel 1 (
   echo.
-  echo [FEHLER] Python Launcher 'py' nicht gefunden. Bitte Python 3.12 installieren:
+  echo [FEHLER] Python 3 nicht gefunden. Bitte installieren:
   echo https://www.python.org/downloads/
   pause
   exit /b 1
 )
 
 echo.
-echo [1/5] Virtuelle Umgebung pruefen/anlegen (.venv, Python 3.12)...
-py -3.12 -m venv .venv
-if errorlevel 1 (
-  echo.
-  echo [HINWEIS] Konnte ggf. kein Python 3.12 finden. Stelle sicher, dass Python 3.12 installiert ist.
-  pause
+echo [1/4] Virtuelle Umgebung pruefen/anlegen (.venv)...
+if not exist .venv (
+  python -m venv .venv
 )
 
 echo.
-echo [2/5] VENV aktivieren...
+echo [2/4] VENV aktivieren...
 call .venv\Scripts\activate.bat
 
 echo.
-echo [3/5] Pip aktualisieren...
+echo [3/4] Requirements installieren...
 python -m pip install --upgrade pip
-
-echo.
-echo [4/5] Requirements installieren...
 pip install -r requirements.txt
 
 echo.
-echo [5/5] Starte Streamlit App...
+echo [4/4] Starte Streamlit App...
 streamlit run app.py
 
 endlocal
+pause
