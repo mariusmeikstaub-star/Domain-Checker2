@@ -13,9 +13,11 @@ Dieses Tool prüft große Domainlisten **ohne API & ohne Kosten**:
 - **Marken-Schutz**: Flag für potenzielle Markenbegriffe (einfache Blacklist) im Ergebnis.
 
 ## Schneller Start (Windows)
-1) Stelle sicher, dass [Python 3](https://www.python.org/downloads/) installiert ist.
-2) Doppelklicke `Start.bat` – die virtuelle Umgebung wird automatisch angelegt,
-   Abhängigkeiten installiert und die Oberfläche im Browser geöffnet.
+1. Repository komplett herunterladen oder klonen.
+2. In den Projektordner wechseln, in dem `Start.bat`, `requirements.txt` und `app.py` liegen.
+3. [Python 3](https://www.python.org/downloads/) muss installiert sein.
+4. `Start.bat` doppelklicken oder in der Eingabeaufforderung ausführen.
+   Die virtuelle Umgebung wird automatisch angelegt, Abhängigkeiten installiert und die Oberfläche im Browser geöffnet.
 
 ## Manuelle Installation (alternativ)
 1) Python 3.10+ installieren.
