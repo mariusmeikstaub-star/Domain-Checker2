@@ -59,8 +59,18 @@ if st.session_state["do_run"] and domains:
 
     for i, domain in enumerate(domains, start=1):
         reg, who_src, who_note = whois_is_registered(domain, sleep_after=delay)
-        traf, traf_src, traf_note = traffic_best_effort(domain, sleep_after=delay)
-        bl, bl_src, bl_note = backlinks_estimate(domain, sleep_after=delay)
+
+        # Only fetch traffic/backlinks for registered domains
+        traf = 0
+        traf_src = "none"
+        traf_note = "skip_no_reg"
+        bl = 0
+        bl_src = "none"
+        bl_note = "skip_no_reg"
+
+        if reg:
+            traf, traf_src, traf_note = traffic_best_effort(domain, sleep_after=delay)
+            bl, bl_src, bl_note = backlinks_estimate(domain, sleep_after=delay)
 
         out_rows.append({
             "domain": domain,
@@ -79,18 +89,18 @@ if st.session_state["do_run"] and domains:
         status.dataframe(pd.DataFrame(out_rows).tail(15))
         prog.progress(i/len(domains))
 
-        if traf is not None and reg is False and int(traf) >= int(min_monthly):
+        if reg and int(traf) >= int(min_monthly):
             hits_buffer.append(out_rows[-1])
 
         if i % 25 == 0:
             df_tmp = pd.DataFrame(out_rows)
-            df_tmp.to_csv("full_results.csv", index=False, encoding="utf-8")
+            df_tmp.to_csv("full_results.csv", index=False, encoding="utf-8-sig")
 
     # final speichern
     df_all = pd.DataFrame(out_rows)
-    df_all.to_csv("full_results.csv", index=False, encoding="utf-8")
+    df_all.to_csv("full_results.csv", index=False, encoding="utf-8-sig")
     df_hits = pd.DataFrame(hits_buffer)
-    df_hits.to_csv("hits_over_5000.csv", index=False, encoding="utf-8")
+    df_hits.to_csv("hits_over_5000.csv", index=False, encoding="utf-8-sig")
 
     # Minimal-Export (robuste Typisierung, keine FutureWarnings)
     def _reg_to_text(v):
@@ -102,7 +112,7 @@ if st.session_state["do_run"] and domains:
         "Traffic": pd.to_numeric(df_all["traffic_monthly_est"], errors="coerce").fillna(0).astype(int),
         "Backlinks": pd.to_numeric(df_all["backlinks_total"], errors="coerce").fillna(0).astype(int),
     })
-    exp.to_csv("export_min.csv", index=False, encoding="utf-8")
+    exp.to_csv("export_min.csv", index=False, encoding="utf-8-sig")
 
     # Ergebnisse im State behalten, damit Downloads bei erneuter Ausführung NICHT neu rechnen
     st.session_state["last_results"] = {
