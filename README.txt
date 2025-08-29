@@ -12,14 +12,19 @@ Dieses Tool prüft große Domainlisten **ohne API & ohne Kosten**:
 - **Zwei Exporte**: `full_results.csv` (alles) und `hits_over_5000.csv` (nur ≥5k).
 - **Marken-Schutz**: Flag für potenzielle Markenbegriffe (einfache Blacklist) im Ergebnis.
 
-## Installation
+## Schneller Start (Windows)
+1) Stelle sicher, dass [Python 3](https://www.python.org/downloads/) installiert ist.
+2) Doppelklicke `Start.bat` – die virtuelle Umgebung wird automatisch angelegt,
+   Abhängigkeiten installiert und die Oberfläche im Browser geöffnet.
+
+## Manuelle Installation (alternativ)
 1) Python 3.10+ installieren.
 2) Im Ordner dieses Tools:
    ```
    pip install -r requirements.txt
    ```
 
-## Start
+## Manuell starten (alternativ)
 ```
 streamlit run app.py
 ```
